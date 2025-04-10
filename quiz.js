@@ -8,7 +8,7 @@ class QuizManager {
         // Multiple choice questions
         this.handleMultipleChoice();
         // True/False questions
-        this.handleTrueFalse();
+        this.handleTrueFalseQuestions();
     }
 
     handleMultipleChoice() {
@@ -32,16 +32,10 @@ class QuizManager {
         });
     }
 
+    // Fix the "Kiểm tra câu trả lời" function for True/False questions
     checkMultipleChoiceAnswer(btn) {
         const parentDiv = btn.closest('.exercise-section');
         const feedbackDiv = parentDiv.querySelector('.feedback');
-        const selectedOption = parentDiv.querySelector('.quiz-option.selected');
-
-        if (!selectedOption) {
-            this.showFeedback(feedbackDiv, 'error', 'Vui lòng chọn một đáp án.');
-            return;
-        }
-
         const questionNumber = parseInt(parentDiv.querySelector('.exercise-header h3').textContent.replace('Câu ', ''));
         const correctAnswers = {
             1: 'B',
@@ -53,47 +47,92 @@ class QuizManager {
             7: 'A',
             8: 'C',
             9: 'C',
-            10: 'B'
+            10: 'B',
+            11: ['true', 'true', 'false', 'false'],
+            12: ['true', 'false', 'true', 'false']
         };
 
-        const selectedLetter = selectedOption.textContent.charAt(0);
-        if (selectedLetter === correctAnswers[questionNumber]) {
-            this.showFeedback(feedbackDiv, 'success', '✅ Chúc mừng! Bạn đã chọn đúng đáp án.');
-            window.progressManager.updateProgress('quiz');
+        if (Array.isArray(correctAnswers[questionNumber])) {
+            // Handle True/False questions
+            const tfStatements = parentDiv.querySelectorAll('.tf-statement');
+            let allAnswered = true;
+            let correctCount = 0;
+            let feedbackMessage = '';
+
+            tfStatements.forEach((statement, index) => {
+                const selectedTFOption = statement.querySelector('input[type="radio"]:checked');
+                const correctValue = correctAnswers[questionNumber][index];
+
+                if (!selectedTFOption) {
+                    allAnswered = false;
+                } else if (selectedTFOption.value === correctValue) {
+                    correctCount++;
+                } else {
+                    feedbackMessage += `Phát biểu ${String.fromCharCode(97 + index)}) đúng là ${correctValue === 'true' ? 'Đúng' : 'Sai'}.<br>`;
+                }
+            });
+
+            if (!allAnswered) {
+                this.showFeedback(feedbackDiv, 'error', 'Vui lòng trả lời tất cả các câu hỏi.');
+                return;
+            }
+
+            if (correctCount === tfStatements.length) {
+                this.showFeedback(feedbackDiv, 'success', '✅ Chúc mừng! Bạn đã trả lời đúng tất cả các phát biểu.');
+            } else {
+                this.showFeedback(feedbackDiv, 'error', 
+                    `❌ Bạn đã trả lời đúng ${correctCount}/${tfStatements.length} phát biểu.<br>${feedbackMessage}`);
+            }
         } else {
-            this.showFeedback(feedbackDiv, 'error', 
-                `❌ Rất tiếc, đáp án chưa chính xác.<br>Gợi ý: Đáp án đúng là ${correctAnswers[questionNumber]}.`);
+            // Handle multiple-choice questions
+            const selectedOption = parentDiv.querySelector('.quiz-option.selected');
+
+            if (!selectedOption) {
+                this.showFeedback(feedbackDiv, 'error', 'Vui lòng chọn một đáp án.');
+                return;
+            }
+
+            const selectedLetter = selectedOption.textContent.charAt(0);
+            if (selectedLetter === correctAnswers[questionNumber]) {
+                this.showFeedback(feedbackDiv, 'success', '✅ Chúc mừng! Bạn đã chọn đúng đáp án.');
+                window.progressManager.updateProgress('quiz');
+            } else {
+                this.showFeedback(feedbackDiv, 'error', `❌ Rất tiếc, đáp án chưa chính xác. Đáp án đúng là ${correctAnswers[questionNumber]}.`);
+            }
         }
     }
 
-    handleTrueFalse() {
+    handleTrueFalseQuestions() {
         const tfSections = document.querySelectorAll('.tf-section');
         tfSections.forEach(section => {
             const checkBtn = section.querySelector('.check-tf-btn');
             if (checkBtn) {
                 checkBtn.addEventListener('click', () => {
-                    this.checkTrueFalseAnswers(section);
+                    this.checkTrueFalseAnswersForSpecificQuestions(section);
                 });
             }
         });
     }
 
-    checkTrueFalseAnswers(section) {
+    checkTrueFalseAnswersForSpecificQuestions(section) {
         const feedbackDiv = section.querySelector('.feedback');
-        const statements = section.querySelectorAll('.tf-statement');
+        const tfStatements = section.querySelectorAll('.tf-statement');
         let allAnswered = true;
         let correctCount = 0;
-        const totalStatements = statements.length;
+        let feedbackMessage = '';
 
-        statements.forEach(statement => {
+        tfStatements.forEach((statement, index) => {
             const selectedOption = statement.querySelector('input[type="radio"]:checked');
+            const correctInput = statement.querySelector('input[data-correct="true"]');
+
             if (!selectedOption) {
                 allAnswered = false;
-                return;
+            } else if (selectedOption.value === correctInput.value) {
+                correctCount++;
+            } else {
+                const correctValue = correctInput.value;
+                feedbackMessage += `Phát biểu ${String.fromCharCode(97 + index)}) đúng là ${correctValue === 'true' ? 'Đúng' : 'Sai'}.<br>`;
             }
-
-            const isCorrect = selectedOption.value === statement.getAttribute('data-correct');
-            if (isCorrect) correctCount++;
         });
 
         if (!allAnswered) {
@@ -101,13 +140,11 @@ class QuizManager {
             return;
         }
 
-        if (correctCount === totalStatements) {
-            this.showFeedback(feedbackDiv, 'success', 
-                '✅ Chúc mừng! Bạn đã trả lời đúng tất cả các phát biểu.');
-            window.progressManager.updateProgress('tf');
+        if (correctCount === tfStatements.length) {
+            this.showFeedback(feedbackDiv, 'success', '✅ Chúc mừng! Bạn đã trả lời đúng tất cả các phát biểu.');
         } else {
             this.showFeedback(feedbackDiv, 'error', 
-                `❌ Bạn đã trả lời đúng ${correctCount}/${totalStatements} phát biểu.<br>Hãy xem lại phần lý thuyết và thử lại.`);
+                `❌ Bạn đã trả lời đúng ${correctCount}/${tfStatements.length} phát biểu.<br>${feedbackMessage}`);
         }
     }
 
