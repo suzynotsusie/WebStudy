@@ -342,27 +342,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Font theme functionality
 function initializeFontThemes() {
     const fontThemeBoxes = document.querySelectorAll('.font-theme-box');
-    
+
     fontThemeBoxes.forEach(box => {
         box.addEventListener('click', function() {
             // Remove active class from all boxes
             fontThemeBoxes.forEach(b => b.classList.remove('active'));
             // Add active class to clicked box
             this.classList.add('active');
-            
+
             // Get the font family
             const fontFamily = this.getAttribute('data-font');
-            
-            // Remove all existing font theme classes
-            document.body.classList.remove(
-                'theme-font-montserrat',
-                'theme-font-playfair',
-                'theme-font-roboto',
-                'theme-font-source'
-            );
-            
-            // Add new font theme class
-            document.body.classList.add(`theme-font-${fontFamily.toLowerCase().replace(' ', '-')}`);
+
+            // Apply the font family to the entire website
+            document.body.style.fontFamily = fontFamily;
         });
     });
 }
