@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học HTML & CSS | Trang web tương tác</title>    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body class="min-h-screen theme-blue">
+    <div class="theme-container">        <!-- Header Section -->        <header class="header-section py-4 px-6 sm:px-10 fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+            <div class="container mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <div class="text-3xl font-bold text-blue-600 mr-2">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h1 class="text-2xl font-bold">WebStudy</h1>
+                    </div>
+                    <nav class="w-full md:w-auto">
+                        <ul class="flex flex-wrap justify-center space-x-1 sm:space-x-3">
+                            <li><a href="#" class="nav-link px-3 py-2 active" data-section="home">Trang chủ</a></li>
+                            <li><a href="#" class="nav-link px-3 py-2" data-section="lessons">Bài học</a></li>
+                            <li><a href="#" class="nav-link px-3 py-2" data-section="exercises">Bài tập</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div class="h-20"></div> <!-- Spacer for fixed header -->
+
+        <!-- Main Content -->
+        <main class="container mx-auto px-4 py-6">
+            <!-- Welcome Section -->
+            <div id="home-section" class="section-content active">
+                <div class="content-section p-6 mb-6">
+                    <h2 class="text-2xl font-bold mb-4">Chào mừng đến với WebStudy</h2>
+                    <p class="mb-4">Nền tảng học tập tương tác giúp bạn học HTML và CSS một cách thực tiễn nhất.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <div class="text-4xl text-blue-500 mb-2"><i class="fas fa-laptop-code"></i></div>
+                            <h3 class="text-xl font-semibold mb-2">Học tương tác</h3>
+                            <p>Thực hành trực tiếp với các ví dụ mã nguồn và bài tập tương tác.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <div class="text-4xl text-blue-500 mb-2"><i class="fas fa-check-circle"></i></div>
+                            <h3 class="text-xl font-semibold mb-2">Phản hồi tức thì</h3>
+                            <p>Nhận đánh giá và gợi ý ngay lập tức cho các bài tập bạn hoàn thành.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <div class="text-4xl text-blue-500 mb-2"><i class="fas fa-paint-brush"></i></div>
+                            <h3 class="text-xl font-semibold mb-2">Tùy chỉnh UI</h3>
+                            <p>Thay đổi bố cục và màu sắc để có trải nghiệm học tập thoải mái nhất.</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 text-center">
+                        <button id="start-learning-btn" class="btn-primary px-6 py-3 rounded-lg font-semibold">
+                            Bắt đầu học ngay
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lessons Section -->
+            <div id="lessons-section" class="section-content hidden">
+                <div class="content-section p-6 mb-6">
+                    <h2 class="text-2xl font-bold mb-4">BÀI 23 - CHUẨN BỊ XÂY DỰNG TRANG WEB</h2>
+                    <div class="content-container layout-single-column">
+                        <div class="lesson-content">
+                            <div class="mb-8">
+                                <h3 class="text-xl font-semibold mb-3">1. Những đặc điểm chung của trang web</h3>
+                                <p class="mb-4">Dễ nhận thấy mỗi trang web đầy đủ nhất đều có cấu trúc gồm ba phần chính:</p>
+                                <ul class="list-disc pl-6 mb-4">
+                                    <li class="mb-1">Phần đầu trang (header) với những thông tin chung nhất về trang.</li>
+                                    <li class="mb-1">Phần thân trang (body) chứa nội dung của trang.</li>
+                                    <li class="mb-1">Phần chân trang (footer) chứa các thông tin ngắn gọn về chủ thể, bản quyền.</li>
+                                </ul>
+                                
+                                <div class="mb-6">
+                                    <h4 class="text-lg font-semibold mb-2">a) Phần đầu trang</h4>
+                                    <p class="mb-2">Có vai trò như trang bìa thu gọn của cuốn sách hoặc đầu mỗi chương sách.</p>
+                                    <p class="mb-2">Chứa Hình nền, Logo, Tên trang, Thanh điều hướng (bao gồm bảng chọn các chức năng, chức năng tìm kiếm có thể tách riêng), Tiêu đề, Thông tin tóm tắt hoặc thông tin mới cập nhật.</p>
+                                    <div class="border p-4 mb-2 bg-blue-50 rounded">
+                                        <p class="font-semibold">Lưu ý:</p>
+                                        <ul class="list-disc pl-6">
+                                            <li>Khi trang web tải lên trình duyệt, tên trang hiển thị tại tiêu đề của tab cùng với một favicon.</li>
+                                            <li>Favicon có thể không phải là phiên bản thu gọn của logo trang, mà được tạo riêng cho toàn bộ website.</li>
+                                        </ul>
+                                    </div>
+                                    <p class="mb-2">Mỗi trang web trên Internet có một địa chỉ truy cập dạng URL (Uniform Resource Locator) để người dùng có thể truy cập qua trình duyệt web như Firefox, Chrome, Edge, Safari,...</p>
+                                    <p>Tùy theo thiết kế, đôi khi có một vài dòng thông báo quan trọng trước phần đầu trang, ví dụ như trang đang được xây dựng hay bảo trì. Phần này gọi là phần thông báo.</p>                                    <div class="bg-gray-100 p-3 rounded-lg mt-3 text-center">
+                                        <img src="images/23.1-header-example.png" alt="Minh họa phần đầu trang" class="mx-auto max-w-full h-auto zoomable-image">
+                                        <p class="text-sm text-gray-500">Hình 23.1 - Minh họa phần đầu trang</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <h4 class="text-lg font-semibold mb-2">b) Phần thân trang</h4>
+                                    <p class="mb-2">Thân trang là phần chứa nội dung chính của trang web, thường được bố cục thành các khối hình chữ nhật, mỗi khối trình bày một nội dung với tiêu đề riêng.</p>                                    <div class="bg-gray-100 p-3 rounded-lg mt-3 text-center">
+                                        <img src="images/23.2-body-example.png" alt="Minh họa phần thân trang" class="mx-auto max-w-full h-auto zoomable-image">
+                                        <p class="text-sm text-gray-500">Hình 23.2 - Minh họa phần thân trang</p>
+                                    </div>
+                                    
+                                    <p class="mt-3 mb-2">Mỗi khối nội dung có thể chứa thông tin dạng văn bản, hình ảnh, âm thanh, biểu mẫu nhập dữ liệu, hoặc các ứng dụng nhúng khác nhau như ứng dụng bản đồ, dự báo thời tiết,...</p>                                    <div class="bg-gray-100 p-3 rounded-lg mt-3 text-center">
+                                        <img src="images/23.3-content-blocks.png" alt="Minh họa thành phần trong thân trang" class="mx-auto max-w-full h-auto zoomable-image">
+                                        <p class="text-sm text-gray-500">Hình 23.3 - Minh họa thành phần trong thân trang</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <h4 class="text-lg font-semibold mb-2">c) Phần chân trang</h4>
+                                    <p class="mb-2">Phần chân trang có thể bao gồm thông tin về thương hiệu, bản quyền, bảo mật, tóm tắt những thông tin quan trọng, thông tin liên hệ và liên kết tới các trang mạng xã hội liên quan.</p>                                    <div class="bg-gray-100 p-3 rounded-lg mt-3 text-center">
+                                        <img src="images/23.4-footer-example.png" alt="Minh họa phần chân trang" class="mx-auto max-w-full h-auto zoomable-image">
+                                        <p class="text-sm text-gray-500">Hình 23.4 - Minh họa phần chân trang</p>
+                                    </div>
+                                </div>
+
+                                <!-- Key Concept Section -->
+                                <div class="mt-8 mb-6">
+                                    <h3 class="text-xl font-semibold mb-4">Khái niệm chính</h3>
+                                    <div class="bg-white rounded-lg shadow-sm p-4">
+                                        <img src="images/keyconcept.png" alt="Khái niệm chính của bài học" class="mx-auto max-w-full h-auto">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-8">
+                                <h3 class="text-xl font-semibold mb-3">2. Các bước chuẩn bị để xây dựng trang web</h3>
+                                <ul class="mb-4">
+                                    <li class="mb-3">
+                                        <span class="font-semibold">• Định hình ý tưởng:</span>
+                                        <ul class="list-disc pl-6 mt-1">
+                                            <li>Xác định mục đích và đối tượng phục vụ của trang web.</li>
+                                            <li>Thiết lập các yêu cầu cần đạt được cả về nội dung và hình thức.</li>
+                                        </ul>
+                                    </li>
+                                    <li class="mb-3">
+                                        <span class="font-semibold">• Thiết kế:</span>
+                                        <ul class="list-disc pl-6 mt-1">
+                                            <li>Xây dựng dàn ý.</li>
+                                            <li>Xây dựng kiến trúc nội dung, thiết kế mĩ thuật, chọn bảng màu, phông chữ,...</li>
+                                        </ul>
+                                    </li>
+                                    <li class="mb-3">
+                                        <span class="font-semibold">• Lựa chọn phần mềm chuẩn bị tư liệu:</span>
+                                        <ul class="list-disc pl-6 mt-1">
+                                            <li>Lựa chọn phần mềm để xây dựng trang web.</li>
+                                            <li>Chuẩn bị thông tin cho phần đầu trang: Làm logo, favicon, ảnh nền và đặt tên trang web.</li>
+                                            <li>Chuẩn bị tư liệu cho phần thân và chân trang.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                  <div class="bg-gray-100 p-3 rounded-lg mt-3 text-center mb-4">                                    <img src="images/mindmap.png" alt="Mindmap các bước chuẩn bị xây dựng trang web" class="mx-auto max-w-full h-auto zoomable-image">
+                                    <p class="text-sm text-gray-500 mt-2">Mindmap các bước chuẩn bị xây dựng trang web</p>
+                                </div>
+                                
+                                <div class="border p-4 mb-4 bg-yellow-50 rounded">
+                                    <p class="font-semibold">Lưu ý:</p>
+                                    <p>Cần phân biệt việc xây dựng trang web đơn giản với xây dựng website. Chuẩn bị xây dựng website có thể đòi hỏi thêm một số bước khác, đặc biệt là cách tổ chức vận hành và quản trị.</p>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <h4 class="text-lg font-semibold mb-2">a) Định hình ý tưởng</h4>
+                                    <ul class="list-disc pl-6 mb-3">
+                                        <li>Xác định mục đích, đối tượng và các yêu cầu cần đạt được.</li>
+                                        <li>Trả lời các câu hỏi: Mục đích của trang web là gì? Ai sẽ quan tâm đến trang web này?</li>
+                                        <li>Trang web phải đáp ứng những yêu cầu nào về nội dung, kiến trúc và mỹ thuật để đạt được mục đích và đáp ứng nhu cầu của người dùng?</li>
+                                    </ul>
+                                    <p>Cần khảo sát, phân tích kỹ lưỡng nhu cầu và đặc điểm của người dùng để hiểu rõ hơn và xác định mục đích cùng các yêu cầu về nội dung và hình thức của trang web. Trả lời các câu hỏi như: Người dùng mong muốn biết những thông tin gì? Điều gì thu hút và gây hứng thú cho họ? Đặc điểm văn hóa và thị hiếu của người dùng là gì?</p>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <h4 class="text-lg font-semibold mb-2">b) Thiết kế</h4>
+                                    <div class="mb-4">
+                                        <h5 class="font-semibold">1. Xây dựng dàn ý tổng thể và bố cục trang</h5>
+                                        <p class="mb-2">Giúp hình dung toàn bộ nội dung sẽ giới thiệu và cách sắp xếp sao cho ấn tượng, mạch lạc, dễ tiếp cận và dễ hiểu.</p>
+                                        <p class="mb-2">Cấu trúc trang:</p>
+                                        <ul class="list-disc pl-6 mb-2">
+                                            <li>Thanh điều hướng: Bảng chọn gồm danh sách các vùng miền và thông tin liên hệ/phản hồi.</li>
+                                            <li>Phần thân trang: Một số bài viết nổi bật về các địa danh.</li>
+                                        </ul>                                        <div class="bg-gray-100 p-3 rounded-lg mt-3 text-center">
+                                            <img src="images/23.5-layout-structure.png" alt="Minh họa bố cuc trang" class="mx-auto max-w-full h-auto zoomable-image">
+                                            <p class="text-sm text-gray-500">Hình 23.5 - Minh họa bố cục trang</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <h5 class="font-semibold">2. Thiết kế mỹ thuật</h5>
+                                        <p class="mb-2">Là thiết kế hình thức sao cho:</p>
+                                        <ul class="list-disc pl-6 mb-3">
+                                            <li>Đảm bảo vẻ đẹp phù hợp với thẩm mỹ của người dùng và nội dung.</li>
+                                            <li>Góp phần gây ấn tượng và tăng sức thuyết phục của nội dung.</li>
+                                            <li>Tiến hành chi tiết cho từng nội dung, từng bài viết của trang web.</li>
+                                        </ul>
+                                          <p class="mb-2">Bao gồm:</p>
+                                        <ul class="list-disc pl-6 mb-3">
+                                            <li>Định dạng chữ: Lựa chọn nhất quán và hài hòa về phông chữ, kiểu chữ (nghiêng, đậm,...) và cỡ chữ.</li>
+                                            <li>Bảng màu: Tránh màu sắc tương phản quá gắt hay không hài hòa. Chọn màu có độ tương phản nhẹ nhàng và hài hòa. Mỗi bảng màu thường có 5 màu pha trộn giữa gam ấm, lạnh và trung tính, kèm theo trắng và đen.</li>
+                                        </ul>
+
+                                        <!-- Font Theme Selection -->
+                                        <div class="mt-6 p-4 bg-white rounded-lg shadow-sm">
+                                            <h4 class="text-lg font-semibold mb-4">Thử nghiệm các kiểu font chữ phổ biến</h4>
+                                            <div class="grid grid-cols-2 gap-4">
+                                                <div class="font-theme-box active p-4" data-font="montserrat">
+                                                    <p class="font-montserrat text-xl mb-2">Montserrat</p>
+                                                    <p class="font-montserrat text-sm text-gray-600">
+                                                        ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+                                                        abcdefghijklmnopqrstuvwxyz<br>
+                                                        0123456789
+                                                    </p>
+                                                </div>
+                                                <div class="font-theme-box p-4" data-font="playfair">
+                                                    <p class="font-playfair text-xl mb-2">Playfair Display</p>
+                                                    <p class="font-playfair text-sm text-gray-600">
+                                                        ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+                                                        abcdefghijklmnopqrstuvwxyz<br>
+                                                        0123456789
+                                                    </p>
+                                                </div>
+                                                <div class="font-theme-box p-4" data-font="roboto">
+                                                    <p class="font-roboto text-xl mb-2">Roboto</p>
+                                                </div>
+                                                <div class="font-theme-box p-4" data-font="source">
+                                                    <p class="font-source text-xl mb-2">Source Sans Pro</p>
+                                                    <p class="font-source text-sm text-gray-600">
+                                                        ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+                                                        abcdefghijklmnopqrstuvwxyz<br>
+                                                        0123456789
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <p class="mt-4 text-sm text-gray-600">Nhấp vào từng ô để xem trước font chữ trên toàn bộ trang web.</p>
+                                        </div><div class="bg-gray-100 p-3 rounded-lg mt-3 text-center">
+                                            <img src="images/23.6-color-palette.png" alt="Minh họa bảng màu" class="mx-auto max-w-full h-auto zoomable-image">
+                                            <p class="text-sm text-gray-500">Hình 23.6 - Minh họa bảng màu</p>
+                                        </div>
+
+                                        <!-- Color Theme Selection -->                                        <div class="mt-6 p-4 bg-white rounded-lg shadow-sm">
+                                            <h4 class="text-lg font-semibold mb-4">Thử nghiệm tùy chỉnh màu trang web tại đây</h4>
+                                            <div class="flex flex-wrap gap-4 justify-center">
+                                                <div class="text-center">
+                                                    <div class="color-swatch active bg-blue-300 mx-auto" data-theme="blue" title="#93C5FD">
+                                                        <button class="w-full h-full rounded-full hover:scale-110 transition-transform" style="background-color: #93C5FD">
+                                                            <span class="sr-only">Xanh dương (#93C5FD)</span>
+                                                        </button>
+                                                    </div>
+                                                    <p class="mt-1 text-sm">Xanh dương<br><span class="text-xs text-gray-500">#93C5FD</span></p>
+                                                </div>
+                                                <div class="text-center">
+                                                    <div class="color-swatch bg-pink-300 mx-auto" data-theme="pink" title="#FBA4C0">
+                                                        <button class="w-full h-full rounded-full hover:scale-110 transition-transform" style="background-color: #FBA4C0">
+                                                            <span class="sr-only">Hồng (#FBA4C0)</span>
+                                                        </button>
+                                                    </div>
+                                                    <p class="mt-1 text-sm">Hồng<br><span class="text-xs text-gray-500">#FBA4C0</span></p>
+                                                </div>
+                                                <div class="text-center">
+                                                    <div class="color-swatch bg-green-300 mx-auto" data-theme="mint" title="#86EFAC">
+                                                        <button class="w-full h-full rounded-full hover:scale-110 transition-transform" style="background-color: #86EFAC">
+                                                            <span class="sr-only">Bạc hà (#86EFAC)</span>
+                                                        </button>
+                                                    </div>
+                                                    <p class="mt-1 text-sm">Bạc hà<br><span class="text-xs text-gray-500">#86EFAC</span></p>
+                                                </div>
+                                                <div class="text-center">
+                                                    <div class="color-swatch bg-purple-300 mx-auto" data-theme="lavender" title="#D8B4FE">
+                                                        <button class="w-full h-full rounded-full hover:scale-110 transition-transform" style="background-color: #D8B4FE">
+                                                            <span class="sr-only">Oải hương (#D8B4FE)</span>
+                                                        </button>
+                                                    </div>
+                                                    <p class="mt-1 text-sm">Oải hương<br><span class="text-xs text-gray-500">#D8B4FE</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <h4 class="text-lg font-semibold mb-2">c) Lựa chọn phần mềm và chuẩn bị tư liệu</h4>
+                                    <div class="mb-4">
+                                        <h5 class="font-semibold">1. Lựa chọn phần mềm</h5>
+                                        <ul class="list-disc pl-6 mb-3">
+                                            <li>Có nhiều phần mềm hỗ trợ làm trang web, phần lớn là thương mại.</li>
+                                            <li>Google cung cấp miễn phí một phần mềm làm trang web với giao diện trực quan, dễ sử dụng và kết nối với các phần mềm khác của Google như Docs, Sheets, Slides, Maps, Photos, YouTube.</li>
+                                            <li>Trang web sau khi hoàn thành được lưu trữ trên Google Drive, có thể chia sẻ và xuất bản với URL hỗ trợ bởi Google.</li>
+                                            <li>Yêu cầu duy nhất là có tài khoản Google Mail.</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <h5 class="font-semibold">2. Chuẩn bị tư liệu</h5>
+                                        <ul class="list-disc pl-6 mb-3">
+                                            <li>Xảy ra trong suốt thời gian thực hiện dự án.</li>
+                                            <li>Bao gồm thiết kế favicon, logo, lựa chọn hình nền cho phần đầu trang, viết bài cho từng nội dung, và chọn hình ảnh minh họa.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exercises Section -->
+            <div id="exercises-section" class="section-content hidden">
+                <div class="content-section p-6 mb-6">
+                    <h2 class="text-2xl font-bold mb-4">Bài tập thực hành</h2>
+                      <!-- Exercise 1: Multiple Choice -->
+                    <div class="exercise-section mb-8">
+                        <div class="exercise-header px-4 py-3">
+                            <h3 class="font-semibold">Câu 1</h3>
+                        </div>
+                        <div class="p-4">
+                            <p class="mb-4">Phần chân trang (footer) trên một trang web thường bao gồm:</p>                                <div class="space-y-2 mb-4">
+                                    <div class="quiz-option p-2 rounded" data-value="1">A. Logo và hình ảnh nền trang trí liên quan</div>
+                                    <div class="quiz-option p-2 rounded" data-value="2" data-correct="true">B. Thông tin bản quyền, liên hệ và các mạng xã hội</div>
+                                    <div class="quiz-option p-2 rounded" data-value="3">C. Các thanh điều hướng chính để di chuyển giữa các trang quan trọng</div>
+                                    <div class="quiz-option p-2 rounded" data-value="4">D. Nội dung chính của bài viết và đoạn văn bản chi tiết</div>
+                                    <div class="mt-4">
+                                        <button class="check-answer-btn px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Kiểm tra câu trả lời</button>
+                                        <div class="feedback mt-3 hidden"></div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                      <!-- Exercise 2: Multiple Choice -->
+                    <div class="exercise-section mb-8">
+                        <div class="exercise-header px-4 py-3">
+                            <h3 class="font-semibold">Câu 2</h3>
+                        </div>
+                        <div class="p-4">
+                            <p class="mb-4">Favicon là gì?</p>                                <div class="space-y-2 mb-4">
+                                    <div class="quiz-option p-2 rounded" data-value="1">A. Công cụ dùng để tạo và hiển thị biểu đồ trên web</div>
+                                    <div class="quiz-option p-2 rounded" data-value="2" data-correct="true">B. Biểu tượng nhỏ trên thanh tab trình duyệt đại diện cho website</div>
+                                    <div class="quiz-option p-2 rounded" data-value="3">C. Hình nền trang web hiển thị phía sau nội dung chính</div>
+                                    <div class="quiz-option p-2 rounded" data-value="4">D. Thành phần hiển thị và chứa nội dung chính của website</div>
+                                    <div class="mt-4">
+                                        <button class="check-answer-btn px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Kiểm tra câu trả lời</button>
+                                        <div class="feedback mt-3 hidden"></div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="exercise-section mb-8">
+                        <div class="exercise-header px-4 py-3">
+                            <h3 class="font-semibold">Câu 3</h3>
+                        </div>
+                        <div class="p-4">
+                            <p class="mb-4">Tại sao việc xác định mục đích và đối tượng người dùng là quan trọng khi xây dựng một trang web?</p>                            <div class="space-y-2 mb-4">
+                                <div class="quiz-option p-2 rounded" data-value="1" data-correct="true">A. Để tạo nội dung và giao diện phù hợp với nhu cầu người dùng</div>
+                                <div class="quiz-option p-2 rounded" data-value="2">B. Giảm chi phí quảng cáo và tối ưu hóa ngân sách tiếp thị</div>
+                                <div class="quiz-option p-2 rounded" data-value="3">C. Tăng số lượng các trang phụ để trình bày nhiều thông tin hơn</div>
+                                <div class="quiz-option p-2 rounded" data-value="4">D. Cải thiện tốc độ tải trang và hiệu suất hiển thị nội dung</div>
+                                <div class="mt-4">
+                                    <button class="check-answer-btn px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Kiểm tra câu trả lời</button>
+                                    <div class="feedback mt-3 hidden"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exercise-section mb-8">
+                        <div class="exercise-header px-4 py-3">
+                            <h3 class="font-semibold">Câu 4</h3>
+                        </div>
+                        <div class="p-4">
+                            <p class="mb-4">Thiết kế mỹ thuật trong xây dựng trang web có vai trò gì?</p>
+                            <div class="space-y-2 mb-4">
+                                <div class="quiz-option p-2 rounded" data-value="1" data-correct="true">A. Trình bày nội dung hấp dẫn và phù hợp với thẩm mỹ người dùng</div>
+                                <div class="quiz-option p-2 rounded" data-value="2">B. Thay thế văn bản bằng hình ảnh và biểu đồ minh họa</div>
+                                <div class="quiz-option p-2 rounded" data-value="3">C. Tập trung vào thiết kế logo và biểu tượng nhận diện</div>
+                                <div class="quiz-option p-2 rounded" data-value="4">D. Tạo hiệu ứng động để thu hút sự chú ý của người xem</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exercise-section mb-8">
+                        <div class="exercise-header px-4 py-3">
+                            <h3 class="font-semibold">Câu 5</h3>
+                        </div>
+                        <div class="p-4">
+                            <p class="mb-4">Sự khác biệt cơ bản giữa trang web đơn giản và một website hoàn chỉnh là gì?</p>
+                            <div class="space-y-2 mb-4">
+                                <div class="quiz-option p-2 rounded" data-value="1">A. Website không cần bố cục, chỉ cần văn bản và hình ảnh</div>
+                                <div class="quiz-option p-2 rounded" data-value="2" data-correct="true">B. Trang đơn có nội dung riêng, còn website là tập hợp nhiều trang liên kết</div>
+                                <div class="quiz-option p-2 rounded" data-value="3">C. Trang đơn giản có nhiều tính năng tương tác hơn một website hoàn chỉnh</div>
+                                <div class="quiz-option p-2 rounded" data-value="4">D. Cấu trúc giống nhau, chỉ khác tên gọi</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exercise-section mb-8">
+                        <div class="exercise-header px-4 py-3">
+                            <h3 class="font-semibold">Câu 6</h3>
+                        </div>
+                        <div class="p-4">
+                            <p class="mb-4">Để tăng tính tương tác của website với người dùng, bạn nên làm gì?</p>
+                            <div class="space-y-2 mb-4">
+                                <div class="quiz-option p-2 rounded" data-value="1" data-correct="true">A. Thêm các yếu tố như biểu mẫu, nút bấm và menu tương tác</div>
+                                <div class="quiz-option p-2 rounded" data-value="2">B. Sử dụng nhiều màu sắc sặc sỡ và hiệu ứng chuyển động</div>
+                                <div class="quiz-option p-2 rounded" data-value="3">C. Thêm càng nhiều hình ảnh càng tốt</div>
+                                <div class="quiz-option p-2 rounded" data-value="4">D. Đặt nhiều liên kết đến các trang web khác</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exercise-section mb-8">
+                        <div class="exercise-header px-4 py-3">
+                            <h3 class="font-semibold">Câu 7</h3>
+                        </div>
+                        <div class="p-4">
+                            <p class="mb-4">Khi chọn bảng màu cho website, điều gì cần được chú ý?</p>
+                            <div class="space-y-2 mb-4">
+                                <div class="quiz-option p-2 rounded" data-value="1" data-correct="true">A. Sự hài hòa và tương phản phù hợp giữa các màu sắc</div>
+                                <div class="quiz-option p-2 rounded" data-value="2">B. Sử dụng càng nhiều màu càng tốt để tạo sự nổi bật</div>
+                                <div class="quiz-option p-2 rounded" data-value="3">C. Chỉ sử dụng một màu chủ đạo cho toàn bộ website</div>
+                                <div class="quiz-option p-2 rounded" data-value="4">D. Luôn sử dụng màu trắng làm nền chính</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exercise-section mb-8">
+                        <div class="exercise-header px-4 py-3">
+                            <h3 class="font-semibold">Câu 8</h3>
+                        </div>
+                        <div class="p-4">
+                            <p class="mb-4">Vai trò của phần đầu trang (header) trong một website là gì?</p>
+                            <div class="space-y-2 mb-4">
+                                <div class="quiz-option p-2 rounded" data-value="1" data-correct="true">A. Hiển thị thông tin quan trọng và điều hướng chính của website</div>
+                                <div class="quiz-option p-2 rounded" data-value="2">B. Chứa toàn bộ nội dung chi tiết của website</div>
+                                <div class="quiz-option p-2 rounded" data-value="3">C. Chỉ để hiển thị logo và tên website</div>
+                                <div class="quiz-option p-2 rounded" data-value="4">D. Hiển thị thông tin liên hệ và bản quyền</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exercise-section mb-8">
+                        <div class="exercise-header px-4 py-3">
+                            <h3 class="font-semibold">Câu 9</h3>
+                        </div>
+                        <div class="p-4">
+                            <p class="mb-4">Tại sao việc chuẩn bị tư liệu lại quan trọng trong quá trình xây dựng website?</p>
+                            <div class="space-y-2 mb-4">
+                                <div class="quiz-option p-2 rounded" data-value="1" data-correct="true">A. Giúp đảm bảo nội dung đầy đủ và chất lượng cho website</div>
+                                <div class="quiz-option p-2 rounded" data-value="2">B. Chỉ cần thiết cho việc thiết kế giao diện</div>
+                                <div class="quiz-option p-2 rounded" data-value="3">C. Chỉ quan trọng trong giai đoạn cuối của dự án</div>
+                                <div class="quiz-option p-2 rounded" data-value="4">D. Không ảnh hưởng đến chất lượng website</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exercise-section mb-8">
+                        <div class="exercise-header px-4 py-3">
+                            <h3 class="font-semibold">Câu 10</h3>
+                        </div>
+                        <div class="p-4">
+                            <p class="mb-4">Khi thiết kế bố cục website, điều gì cần được ưu tiên?</p>
+                            <div class="space-y-2 mb-4">
+                                <div class="quiz-option p-2 rounded" data-value="1" data-correct="true">A. Tính dễ sử dụng và trải nghiệm người dùng</div>
+                                <div class="quiz-option p-2 rounded" data-value="2">B. Số lượng hình ảnh và hiệu ứng</div>
+                                <div class="quiz-option p-2 rounded" data-value="3">C. Kích thước của logo và banner</div>
+                                <div class="quiz-option p-2 rounded" data-value="4">D. Số lượng màu sắc sử dụng</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exercise-section mb-8">
+                        <div class="exercise-header px-4 py-3">
+                            <h3 class="font-semibold">Câu 11</h3>
+                        </div>
+                        <div class="p-4">
+                            <p class="mb-4">Trong thiết kế phông chữ cho website, yếu tố nào quan trọng nhất?</p>
+                            <div class="space-y-2 mb-4">
+                                <div class="quiz-option p-2 rounded" data-value="1" data-correct="true">A. Tính đọc được và tính nhất quán trong việc sử dụng font chữ</div>
+                                <div class="quiz-option p-2 rounded" data-value="2">B. Sử dụng càng nhiều font chữ khác nhau càng tốt</div>
+                                <div class="quiz-option p-2 rounded" data-value="3">C. Chỉ sử dụng font chữ có sẵn trong hệ thống</div>
+                                <div class="quiz-option p-2 rounded" data-value="4">D. Kích thước font chữ càng lớn càng tốt</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exercise-section mb-8">
+                        <div class="exercise-header px-4 py-3">
+                            <h3 class="font-semibold">Câu 12</h3>
+                        </div>
+                        <div class="p-4">
+                            <p class="mb-4">Làm thế nào để tối ưu hóa nội dung cho người dùng di động?</p>
+                            <div class="space-y-2 mb-4">
+                                <div class="quiz-option p-2 rounded" data-value="1" data-correct="true">A. Thiết kế responsive và tối ưu hóa kích thước nội dung</div>
+                                <div class="quiz-option p-2 rounded" data-value="2">B. Loại bỏ tất cả hình ảnh và video</div>
+                                <div class="quiz-option p-2 rounded" data-value="3">C. Tạo một phiên bản web riêng cho mobile</div>
+                                <div class="quiz-option p-2 rounded" data-value="4">D. Chỉ sử dụng văn bản thuần túy</div>
+                                <div class="mt-4">
+                                    <button class="check-answer-btn px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Kiểm tra câu trả lời</button>
+                                    <div class="feedback mt-3 hidden"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Section -->
+            <div id="progress-section" class="section-content hidden">
+                <div class="content-section p-6 mb-6">
+                    <h2 class="text-2xl font-bold mb-4">Tiến trình học tập</h2>
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-3">Tổng quan</h3>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="flex items-center justify-between mb-2">
+                                <p class="font-medium">Hoàn thành khóa học</p>
+                                <p class="font-medium"><span id="progress-percentage">0</span>%</p>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-3">Các bài học đã hoàn thành</h3>
+                        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                            <table class="min-w-full">
+                                <thead>
+                                    <tr class="bg-gray-100">
+                                        <th class="py-2 px-4 text-left">Bài học</th>
+                                        <th class="py-2 px-4 text-left">Trạng thái</th>
+                                        <th class="py-2 px-4 text-left">Điểm</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="completed-lessons">
+                                    <tr class="border-t">
+                                        <td class="py-3 px-4">Chưa có bài học nào được hoàn thành</td>
+                                        <td class="py-3 px-4">-</td>
+                                        <td class="py-3 px-4">-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3">Bài tập đã làm</h3>
+                        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                            <table class="min-w-full">
+                                <thead>
+                                    <tr class="bg-gray-100">
+                                        <th class="py-2 px-4 text-left">Bài tập</th>
+                                        <th class="py-2 px-4 text-left">Kết quả</th>
+                                        <th class="py-2 px-4 text-left">Thời gian</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="completed-exercises">
+                                    <tr class="border-t">
+                                        <td class="py-3 px-4">Chưa có bài tập nào được hoàn thành</td>
+                                        <td class="py-3 px-4">-</td>
+                                        <td class="py-3 px-4">-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>            <!-- Settings Section -->
+            <div id="settings-section" class="section-content hidden">
+                <div class="content-section p-6 mb-6">
+                    <h2 class="text-2xl font-bold mb-4">Xem trước giao diện</h2>
+                    <div class="preview-box border rounded-lg overflow-hidden">
+                        <div class="preview-header bg-blue-100 p-4">
+                            <h4 class="font-medium">Tiêu đề trang web</h4>
+                        </div>
+                        <div class="preview-content p-4 bg-white">
+                            <p class="mb-2">Đây là phần nội dung của trang web. Bạn có thể xem trước màu sắc đã chọn tại đây.</p>
+                            <div class="bg-blue-50 p-2 rounded mb-2">
+                                <p>Ví dụ về một phần nội dung đặc biệt.</p>
+                            </div>
+                            <button class="btn-primary px-3 py-1 rounded text-sm">Nút bấm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="bg-blue-100 py-6 px-6">
+            <div class="container mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <h3 class="text-lg font-semibold mb-2">WebStudy</h3>
+                        <p class="text-sm">Nền tảng học tập HTML/CSS tương tác</p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="mt-6 pt-4 border-t border-blue-200 text-center text-sm">
+                    <p>&copy; 2023 WebStudy. Bản quyền thuộc về WebStudy.</p>
+                </div>
+            </div>        </footer>
+    </div>    <script src="scripts.js"></script>
+    <script src="quiz.js"></script>
+    <script src="layout.js"></script>
+    <script src="progress.js"></script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+/* Main theme variables */
+:root {
+    --primary-bg: #f0f8ff;
+    --secondary-bg: #e6f2ff;
+    --accent-color: #80b3ff;
+    --text-color: #4a5568;
+    --header-color: #3b82f6;
+    --border-color: #d1e0ff;
+    --success-color: #48bb78;
+    --error-color: #f56565;
+    --warning-color: #ed8936;
+    --info-color: #4299e1;
+}
+
+/* Base styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.theme-container {
+    transition: all 0.3s ease;
+}
+
+/* Header styles */
+.header-section {
+    background-color: var(--secondary-bg);
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.sidebar {
+    background-color: var(--secondary-bg);
+    border-right: 1px solid var(--border-color);
+}
+
+/* Content styles */
+.content-section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--header-color);
+}
+
+h2 {
+    font-size: 2rem !important;
+}
+
+h3 {
+    font-size: 1.75rem !important;
+}
+
+h4 {
+    font-size: 1.5rem !important;
+}
+
+p, li {
+    font-size: 1.15rem;
+}
+
+.quiz-option {
+    font-size: 1.15rem !important;
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--header-color);
+}
+
+/* Code block styles */
+.code-block {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f7fafc;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+/* Exercise section styles */
+.exercise-section {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.exercise-header {
+    background-color: var(--secondary-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Message styles */
+.success-message {
+    color: var(--success-color);
+}
+
+.error-message {
+    color: var(--error-color);
+}
+
+/* Layout options */
+.layout-option {
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.layout-option:hover {
+    border-color: var(--accent-color);
+}
+
+.layout-option.active {
+    border-color: var(--header-color);
+    background-color: var(--secondary-bg);
+}
+
+/* Color scheme styles */
+.color-swatch {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 2px;
+    background-clip: content-box;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.color-swatch button {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.color-swatch.active {
+    border-color: #4a5568;
+}
+
+.color-swatch:hover button {
+    transform: scale(1.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Progress bar styles */
+.progress-container {
+    height: 8px;
+    width: 100%;
+    background-color: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--accent-color);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+/* Code editor styles */
+.monaco-editor {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    height: 200px;
+}
+
+.preview-container {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: white;
+    min-height: 200px;
+}
+
+/* Theme color schemes */
+.theme-blue {
+    --primary-bg: #e6f2ff;
+    --secondary-bg: #d1e6ff;
+    --accent-color: #80b3ff;
+    --header-color: #3b82f6;
+    --border-color: #b3d1ff;
+}
+
+.theme-pink {
+    --primary-bg: #fff0f7;
+    --secondary-bg: #ffe0ef;
+    --accent-color: #ff99cc;
+    --header-color: #db2777;
+    --border-color: #ffcce6;
+}
+
+.theme-mint {
+    --primary-bg: #f0fff4;
+    --secondary-bg: #dcfce7;
+    --accent-color: #86efac;
+    --header-color: #16a34a;
+    --border-color: #bbf7d0;
+}
+
+.theme-lavender {
+    --primary-bg: #f3f0ff;
+    --secondary-bg: #e9d5ff;
+    --accent-color: #c084fc;
+    --header-color: #9333ea;
+    --border-color: #ddd6fe;
+}
+
+/* Layout styles */
+.layout-single-column .content-container {
+    display: block;
+}
+
+.layout-two-column .content-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.layout-sidebar .content-container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 20px;
+}
+
+/* Code editor style */
+.code-editor {
+    font-family: monospace;
+    line-height: 1.5;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #f8fafc;
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Quiz styles */
+.quiz-section {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.exercise-section {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-header {
+    background-color: #f3f4f6;
+    border-bottom: 1px solid #e5e7eb;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.quiz-option {
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.quiz-option:hover {
+    background-color: #f3f4f6;
+}
+
+.quiz-option.selected {
+    border-color: #3b82f6;
+    background-color: #eff6ff;
+}
+
+.quiz-option.correct-answer {
+    border-color: #059669;
+    background-color: #d1fae5;
+}
+
+.quiz-option.incorrect-answer {
+    border-color: #dc2626;
+    background-color: #fee2e2;
+}
+
+.check-answer-btn {
+    transition: all 0.2s;
+}
+
+.check-answer-btn:hover {
+    transform: translateY(-1px);
+}
+
+.check-answer-btn.answered {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.feedback {
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Progress tracking styles */
+.progress-container {
+    background-color: #f3f4f6;
+    border-radius: 9999px;
+    height: 1.5rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: #3b82f6;
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.completed-exercises {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.completed-exercises th {
+    background-color: #f3f4f6;
+    font-weight: 600;
+    text-align: left;
+}
+
+.completed-exercises td,
+.completed-exercises th {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
