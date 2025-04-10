@@ -39,6 +39,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Color scheme options
+    function updateFooterTheme(theme) {
+        const footer = document.querySelector('footer');
+        const themeStyles = {
+            blue: {
+                background: '#e6f2ff',
+                text: '#3b82f6'
+            },
+            pink: {
+                background: '#ffe0ef',
+                text: '#db2777'
+            },
+            mint: {
+                background: '#dcfce7',
+                text: '#16a34a'
+            },
+            lavender: {
+                background: '#e9d5ff',
+                text: '#9333ea'
+            }
+        };
+
+        const style = themeStyles[theme];
+        footer.style.backgroundColor = style.background;
+        footer.style.color = style.text;
+    }
+
     const colorSwatches = document.querySelectorAll('.color-swatch');
     colorSwatches.forEach(swatch => {
         swatch.addEventListener('click', function() {
@@ -48,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.className = document.body.className.replace(/theme-\S+/g, '');
             document.body.classList.add('theme-' + theme);
             updatePreviewBox();
+            updateFooterTheme(theme); // Update footer theme
         });
     });
     
@@ -362,3 +389,157 @@ function initializeFontThemes() {
     // Initialize exercise handlers
     initializeExerciseHandlers();
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize lightbox functionality
+    initLightbox();
+});
+
+function initLightbox() {
+    // Find all images that should use lightbox (you can customize this selector)
+    const images = document.querySelectorAll('img:not(.no-lightbox)');
+    const lightboxContainer = document.getElementById('lightbox-container');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+    const lightboxLoader = document.getElementById('lightbox-loader');
+    const closeBtn = document.querySelector('.lightbox-close');
+    const prevBtn = document.querySelector('.lightbox-prev');
+    const nextBtn = document.querySelector('.lightbox-next');
+    
+    let currentIndex = 0;
+    const galleryImages = [];
+    
+    // Add lightbox class and click event to each image
+    images.forEach((img, index) => {
+        // Add the lightbox-image class to make it visually indicate it can be clicked
+        img.classList.add('lightbox-image');
+        
+        // Collect image information
+        galleryImages.push({
+            src: img.src,
+            alt: img.alt || 'Image ' + (index + 1),
+            title: img.getAttribute('data-title') || img.title || ''
+        });
+        
+        // Add click event
+        img.addEventListener('click', function() {
+            openLightbox(index);
+        });
+    });
+    
+    // Open lightbox function
+    function openLightbox(index) {
+        if (!lightboxContainer) return;
+        
+        currentIndex = index;
+        
+        // Show loader while image is loading
+        if (lightboxLoader) lightboxLoader.style.display = 'block';
+        
+        // Set image source and prepare caption
+        lightboxImage.src = galleryImages[currentIndex].src;
+        
+        // When image is loaded, hide loader
+        lightboxImage.onload = function() {
+            if (lightboxLoader) lightboxLoader.style.display = 'none';
+        };
+        
+        // Set caption text if available
+        if (lightboxCaption) {
+            const caption = galleryImages[currentIndex].title || galleryImages[currentIndex].alt;
+            lightboxCaption.textContent = caption;
+            lightboxCaption.style.display = caption ? 'block' : 'none';
+        }
+        
+        // Update counter
+        if (lightboxCounter) {
+            lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
+        }
+        
+        // Show/hide navigation buttons based on gallery size
+        if (prevBtn && nextBtn) {
+            prevBtn.style.display = galleryImages.length > 1 ? 'flex' : 'none';
+            nextBtn.style.display = galleryImages.length > 1 ? 'flex' : 'none';
+        }
+        
+        // Display the lightbox
+        lightboxContainer.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+    
+    // Close lightbox function
+    function closeLightbox() {
+        lightboxContainer.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Re-enable scrolling
+    }
+    
+    // Navigate to previous image
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+        openLightbox(currentIndex);
+    }
+    
+    // Navigate to next image
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % galleryImages.length;
+        openLightbox(currentIndex);
+    }
+    
+    // Event listeners for lightbox controls
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeLightbox);
+    }
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', prevImage);
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', nextImage);
+    }
+    
+    // Close lightbox when clicking outside the image
+    lightboxContainer.addEventListener('click', function(e) {
+        if (e.target === lightboxContainer) {
+            closeLightbox();
+        }
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (lightboxContainer.style.display === 'block') {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                prevImage();
+            } else if (e.key === 'ArrowRight') {
+                nextImage();
+            }
+        }
+    });
+    
+    // Touch swipe support for mobile devices
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    lightboxContainer.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, false);
+    
+    lightboxContainer.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, false);
+    
+    function handleSwipe() {
+        if (touchEndX < touchStartX - 50) {
+            // Swipe left: next image
+            nextImage();
+        } else if (touchEndX > touchStartX + 50) {
+            // Swipe right: previous image
+            prevImage();
+        }
+    }
+}

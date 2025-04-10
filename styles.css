@@ -377,3 +377,478 @@ p, li {
     font-weight: 500;
     color: #333;
 }
+
+
+/* Animation and Transition Effects */
+
+/* Smooth page transitions */
+.page-transition {
+    animation: pageTransition 0.5s ease;
+}
+
+@keyframes pageTransition {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Card hover effects */
+.content-card {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.content-card:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.12);
+    transform: translateY(-5px);
+}
+
+/* Button effects */
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.btn-primary:hover:after {
+    left: 100%;
+}
+
+.btn-primary:active {
+    transform: scale(0.95);
+}
+
+/* Text highlight effect on hover */
+.highlight-text {
+    position: relative;
+    display: inline-block;
+}
+
+.highlight-text:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.highlight-text:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Gradient backgrounds */
+.gradient-header {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--accent-color) 100%);
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gradient-card {
+    background: linear-gradient(to right, var(--primary-bg), var(--secondary-bg));
+    border: none;
+}
+
+/* Animated icons */
+.icon-container {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.icon-container:hover {
+    transform: rotate(10deg) scale(1.2);
+}
+
+/* Scroll reveal animations */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Pulse animation for notifications */
+.notification-badge {
+    position: relative;
+    display: inline-block;
+}
+
+.notification-badge:after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: var(--error-color);
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(245, 101, 101, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(245, 101, 101, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(245, 101, 101, 0);
+    }
+}
+
+/* Loading spinner */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--secondary-bg);
+    border-top: 4px solid var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Advanced card effects */
+.flip-card {
+    perspective: 1000px;
+    height: 200px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.flip-card-front {
+    background-color: white;
+}
+
+.flip-card-back {
+    background-color: var(--secondary-bg);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Glassmorphism effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Neumorphism effect */
+.neomorphic {
+    background: var(--primary-bg);
+    border-radius: 50px;
+    box-shadow: 20px 20px 60px #d0d8e6, -20px -20px 60px #ffffff;
+    border: none;
+}
+
+.neomorphic-inset {
+    background: var(--primary-bg);
+    border-radius: 50px;
+    box-shadow: inset 8px 8px 16px #d0d8e6, inset -8px -8px 16px #ffffff;
+    border: none;
+}
+
+/* Text animations */
+.text-focus-in {
+    animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@keyframes text-focus-in {
+    0% {
+        filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--primary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--header-color);
+}
+
+/* Tooltip styling */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Animated underline navigation links */
+.nav-link {
+    position: relative;
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 5px 0;
+}
+
+.nav-link:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+.nav-link.active:before {
+    visibility: visible;
+    transform: scaleX(1);
+    background-color: var(--header-color);
+}
+
+/* Image hover effects */
+.image-zoom {
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.image-zoom img {
+    transition: transform 0.5s ease;
+}
+
+.image-zoom:hover img {
+    transform: scale(1.1);
+}
+
+.image-grayscale {
+    transition: filter 0.5s ease;
+}
+
+.image-grayscale:hover {
+    filter: grayscale(0%);
+}
+
+.image-grayscale {
+    filter: grayscale(100%);
+}
+
+/* Focus effects for form elements */
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(128, 179, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Ripple effect for buttons */
+.ripple-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple-button::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+}
+
+.ripple-button:active::after {
+    transform: scale(0, 0);
+    opacity: .3;
+    transition: 0s;
+}
+
+/* 3D button effect */
+.button-3d {
+    position: relative;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 6px 0 darken(var(--accent-color), 10%);
+    transition: all 0.1s ease;
+}
+
+.button-3d:hover {
+    box-shadow: 0 4px 0 darken(var(--accent-color), 10%);
+    transform: translateY(2px);
+}
+
+.button-3d:active {
+    box-shadow: 0 1px 0 darken(var(--accent-color), 10%);
+    transform: translateY(5px);
+}
+
+
+/* Lightbox Styles */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    display: block;
+}
+
+.lightbox-caption {
+    margin-top: 10px;
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.lightbox-nav button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.lightbox-prev {
+    left: 10px;
+}
+
+.lightbox-next {
+    right: 10px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1001;
+}
